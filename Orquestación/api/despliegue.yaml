@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-reticulas
+  labels:
+    api: reticulas
+    nivel: backend
+spec:
+  selector:
+    matchLabels:
+      api: reticulas
+      rol: servicio-web
+      nivel: backend
+  replicas: 7
+  template:
+    metadata:
+      labels:
+        api: reticulas
+        rol: servicio-web
+        nivel: backend
+    spec:
+      containers:
+      - name: api-reticulas
+        image: maormor/reticulas-rest:v2 #v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: DB_PASS
+          value: pass

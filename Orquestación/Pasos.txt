@@ -1,0 +1,33 @@
+Persistencia
+  # Eliminar pod
+Volumenes persistentes en el nodo
+Desplegar 7 replicas
+Ingress
+  # app.[Primera letra del nombre][apellido].com 
+  # app.morozcomorua.com
+Namespace
+  # [Primera letra del nombre][apellido]
+  # morozcomorua
+  # kubectl create namespace morozcomorua
+
+# kubectl apply -f *.yaml --namespace=morozcomorua
+# kubectl describe namespace morozcomorua
+# kubectl config set-context --current --namespace=morozcomorua
+# kubectl config view
+
+# Crea carpeta /reticulas/bd/ en minikube
+# Crear Namespace
+# Hacer default
+# Crear Volumenes
+
+# kubectl apply -f
+# minikube addons enable ingress
+# minikube addons list
+
+Minikube
+  # 2200
+  # Ver dns nombre servicios
+  # BD_RETICULAS_SERVICE_HOST=10.99.218.239
+
+kubectl delete deploy bd/despliegue.yaml
+kubectl apply -f bd/despliegue.yaml

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bd-reticulas
+  labels:
+    api: reticulas
+    nivel: backend
+spec:
+  selector:
+    matchLabels:
+      api: reticulas
+      rol: bd
+      nivel: backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        api: reticulas
+        rol: bd
+        nivel: backend
+    spec:
+      volumes:
+      - name: pv-reticulas # pv-storage
+        persistentVolumeClaim:
+          claimName: pv-claim-reticulas
+      containers:
+      - name: bd-reticulas
+        image: maormor/reticulas-mysql:v1
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+          - mountPath: "/var/lib/mysql"
+            name: pv-reticulas # pv-storage
